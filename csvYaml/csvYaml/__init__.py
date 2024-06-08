@@ -18,5 +18,5 @@ def converter(filename):
 def getversion():
     '''Function to fetch version'''
     with open('./version.txt', 'r', encoding='UTF-8') as file:
-        version = file.read()
-    return version
+        version = file.readlines()
+    return version[-1]

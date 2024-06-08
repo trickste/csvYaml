@@ -4,12 +4,12 @@ The configuration file for packaging
 from setuptools import setup, find_packages
 
 with open('csvYaml/version.txt', 'r', encoding='UTF-8') as file:
-    version = file.read() 
+    version = file.readlines()
 
 setup(
     name="csvYaml",
     author="Nishant Prakash",
     author_email="nishantprakashsaini285@gmail.com",
-    version=version,
+    version=version[-1],
     packages=find_packages(),
 )
