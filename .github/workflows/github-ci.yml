@@ -8,17 +8,18 @@ on:
 
 jobs:
   test:
+    name: Perform Lint test
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v4
-    - name: Perform Lint test
-      run: |
+    - run: |
         ls -al
         pylint csvTaml/csvYaml
 
   build:
+    needs: test
+    name: Build the Docker image
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
