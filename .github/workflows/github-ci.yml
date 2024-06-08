@@ -28,7 +28,13 @@ jobs:
         docker login -u ${{ vars.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PAT }}
         docker build . --file Dockerfile --tag tricksterepo/csvyaml:"${version}"
         docker push tricksterepo/csvyaml:"${version}"
-      env:
-        password: "dckr_pat_luA7R4CDebgtA2HFVecPnsY_at0"
-        pass: ${{ secrets.DOCKER_PAT }}
+
+  deploy:
+    needs: build
+    name: Deploy the Docker image
+    steps:
+    - uses: actions/checkout@v4
+    - run: |
+        docker compose up -d
+
 

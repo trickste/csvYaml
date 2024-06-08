@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  web:
+    image: tricksterepo/csvyaml:latest
+    ports:
+      - "5000:5000"
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
