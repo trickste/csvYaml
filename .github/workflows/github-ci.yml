@@ -28,7 +28,7 @@ jobs:
         docker login -u ${{ vars.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PAT }}
         docker build . --file Dockerfile --tag tricksterepo/csvyaml:"${version}"
         docker tag tricksterepo/csvyaml:"${version}" tricksterepo/csvyaml:latest
-        docker push tricksterepo/csvyaml:"${version} && docker push tricksterepo/csvyaml:latest
+        docker push tricksterepo/csvyaml:"${version}" && docker push tricksterepo/csvyaml:latest
 
   deploy:
     needs: build
