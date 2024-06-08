@@ -16,6 +16,6 @@ def converter(filename):
         sys.exit(1)
 
 def getversion():
-    with open('csvYaml/csvYaml/version.txt', 'r', encoding='UTF-8') as file:
+    with open('./version.txt', 'r', encoding='UTF-8') as file:
         version = file.read() 
     return version
