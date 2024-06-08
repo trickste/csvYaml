@@ -28,6 +28,6 @@ jobs:
         docker login -u ${username} -p ${password}
         docker build . --file Dockerfile --tag tricksterepo/csvyaml:"${version}"
         docker push tricksterepo/csvyaml:"${version}"
-      with:
+      env:
         username: ${{ env.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKER_PAT }}
