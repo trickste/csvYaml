@@ -16,6 +16,7 @@ def converter(filename):
         sys.exit(1)
 
 def getversion():
+    '''Function to fetch version'''
     with open('./version.txt', 'r', encoding='UTF-8') as file:
-        version = file.read() 
+        version = file.read()
     return version
