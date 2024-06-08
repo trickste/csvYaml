@@ -3,7 +3,7 @@ The configuration file for packaging
 '''
 from setuptools import setup, find_packages
 
-with open('csvYaml/version.txt', 'r', encoding='UTF-8') as file:
+with open('version.txt', 'r', encoding='UTF-8') as file:
     version = file.readlines()
 
 setup(

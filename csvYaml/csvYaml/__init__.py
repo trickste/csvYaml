@@ -14,9 +14,3 @@ def converter(filename):
     else:
         print("File not of acceptable format")
         sys.exit(1)
-
-def getversion():
-    '''Function to fetch version'''
-    with open('./version.txt', 'r', encoding='UTF-8') as file:
-        version = file.readlines()
-    return version[-1]
