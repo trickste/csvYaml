@@ -25,9 +25,9 @@ jobs:
         ls -al csvYaml
         version=`python3 csvYaml/fetchVersion.py`
         echo $version
-        docker login -u ${username} -p ${password}
+        docker login -u tricksterepo -p dckr_pat_luA7R4CDebgtA2HFVecPnsY_at0
         docker build . --file Dockerfile --tag tricksterepo/csvyaml:"${version}"
         docker push tricksterepo/csvyaml:"${version}"
-      env:
-        username: ${{ env.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKER_PAT }}
+      # env:
+      #   username: ${{ env.DOCKERHUB_USERNAME }}
+      #   password: ${{ secrets.DOCKER_PAT }}
