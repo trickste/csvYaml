@@ -23,11 +23,11 @@ jobs:
     - uses: actions/checkout@v4
     - run: |
         ls -al csvYaml
-        version='python3 csvYaml/fetchVersion.py'
+        version=`python3 csvYaml/fetchVersion.py`
         echo $version
         docker login -u ${username} -p ${password}
         docker build . --file Dockerfile --tag tricksterepo/csvyaml:"${version}"
         docker push tricksterepo/csvyaml:"${version}"
-      env:
+      with:
         username: ${{ env.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKER_PAT }}
