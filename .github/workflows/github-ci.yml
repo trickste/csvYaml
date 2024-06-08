@@ -7,14 +7,14 @@ on:
     branches: [ "main", feat/fixcicd ]
 
 jobs:
-
   test:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v4
     - name: Perform Lint test
-      run: pylint csvTaml/csvYaml
-
+      run: |
+        ls -al
+        pylint csvTaml/csvYaml
 
   build:
     runs-on: self-hosted
