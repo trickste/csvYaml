@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-with open('csvYaml/csvYaml/version.txt', 'r', encoding='UTF-8') as file:
+with open('csvYaml/version.txt', 'r', encoding='UTF-8') as file:
     version = file.read() 
 
 setup(
