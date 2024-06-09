@@ -54,15 +54,6 @@ csvYaml
 #### App when file is processed and ready to be downloaded:
 ![App - Processed](./readme-asset/appProcessed.png)
 
-## CI/CD Flow
-
-#### CI/CD flow of the application:
-![App - Idle](./readme-asset/cicdFlowchart.png)
-
-#### CI/CD Github Actions Screenshot
-![App - Idle](./readme-asset/cicdGithub.png)
-#Note: The pipeline waits for manual approval to perform CD
-
 ## Conversion Example
 
 #### Sample yaml File: yamlFile.yaml
@@ -114,6 +105,22 @@ host,timeout,tags/0/ip,tags/1/env,tags/2/type,tags/3/name,tags/4/hardware,tags/5
 174.28.32.8,1.0,174.28.32.8,prod,virtual,2-play,server,val31,val32,val33
 ```
 
+#### csvYaml module usage
+```
+from csvYaml import converter
+
+output_file = converter(input_file, output_file_directory)
+
+```
+
+## CI/CD Flow
+
+#### CI/CD flow of the application:
+![App - Idle](./readme-asset/cicdFlowchart.png)
+
+#### CI/CD Github Actions Screenshot
+![App - Idle](./readme-asset/cicdGithub.png)
+#Note: The pipeline waits for manual approval to perform CD
 
 ## Roadmap
 - Automatic Version upgrade
