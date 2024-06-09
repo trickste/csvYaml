@@ -54,7 +54,7 @@ csvYaml
 #### App when file is processed and ready to be downloaded:
 ![App - Processed](./readme-asset/appProcessed.png)
 
-### CI/CD Flow
+#### CI/CD Flow
 
 #### CI/CD flow of the application:
 ![App - Idle](./readme-asset/cicdFlowchart.png)
