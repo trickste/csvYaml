@@ -64,7 +64,10 @@ csvYaml
 ### CI/CD Flow
 
 #### CI/CD flow of the application:
-![App - Idle](./readme-asset/cicd.png)
-#Note: The deployment step waits for manual approval
+![App - Idle](./readme-asset/cicdFlowchart.png)
+
+#### CI/CD Github Actions Screenshot
+![App - Idle](./readme-asset/cicdGithub.png)
+#Note: The pipeline waits for manual approval to perform CD
 
 
