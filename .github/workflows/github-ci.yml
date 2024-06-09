@@ -52,5 +52,5 @@ jobs:
     - name: Deploy application
       run: |
         docker compose up -d
-      with:
-        environment: dev
+    with:
+      environment: dev
