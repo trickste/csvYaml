@@ -63,6 +63,57 @@ csvYaml
 ![App - Idle](./readme-asset/cicdGithub.png)
 #Note: The pipeline waits for manual approval to perform CD
 
+## Conversion Example
+
+#### Sample yaml File: yamlFile.yaml
+```
+    instances:
+- host: 173.20.1.1
+  timeout: 1.0
+  tags:
+  - ip:173.20.1.1
+  - env:prod
+  - type:virtual
+  - name:2-base
+  - hardware:server
+  - testval:
+    - val11
+    - val12
+    - val13
+- host: 174.28.2.2
+  timeout: 1.0
+  tags:
+  - ip:174.28.2.2
+  - env:prod
+  - type:virtual
+  - name:2-game
+  - hardware:server
+  - testval:
+    - val21
+    - val22
+    - val23
+- host: 174.28.32.8
+  timeout: 1.0
+  tags:
+  - ip:174.28.32.8
+  - env:prod
+  - type:virtual
+  - name:2-play
+  - hardware:server
+  - testval:
+    - val31
+    - val32
+    - val33
+```
+
+#### Output File:
+```
+host,timeout,tags/0/ip,tags/1/env,tags/2/type,tags/3/name,tags/4/hardware,tags/5/testval/0,tags/5/testval/1,tags/5/testval/2
+173.20.1.1,1.0,173.20.1.1,prod,virtual,2-base,server,val11,val12,val13
+174.28.2.2,1.0,174.28.2.2,prod,virtual,2-game,server,val21,val22,val23
+174.28.32.8,1.0,174.28.32.8,prod,virtual,2-play,server,val31,val32,val33
+```
+
 
 ## Roadmap
 - Automatic Version upgrade
