@@ -47,10 +47,9 @@ jobs:
     needs: imagetest
     name: Deploy the Docker image
     runs-on: self-hosted
+    environment: dev
     steps:
     - uses: actions/checkout@v4
     - name: Deploy application
       run: |
         docker compose up -d
-    with:
-      environment: dev
