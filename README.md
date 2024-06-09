@@ -3,6 +3,8 @@
 ## Project Decscription
 This repository contains a Web application that converts between "YAML" and "CSV" file formats. It provides a user-friendly interface for uploading a file, processing it, and downloading the converted file.
 
+## Key Components
+**csvYaml Module**: A custom Python module that handles the conversion between YAML and CSV. This module is packaged and used within the application container.
 
 ## Features
 - YAML to CSV Conversion: Upload a YAML file and receive a CSV file.
@@ -14,16 +16,6 @@ This repository contains a Web application that converts between "YAML" and "CSV
 - Frontend: HTML, CSS
 - Containerization: Docker
 - CICD: Github Actions
-
-## Key Components
-**csvYaml Module**: A custom Python module that handles the conversion between YAML and CSV. This module is packaged and used within the application container.
-
-## How It Works
-- Upload: Users can upload a YAML or CSV file through the web interface.
-- Process: The application processes the uploaded file using the csvYaml module.
-- Download: Users can download the converted file from the web interface.
-- File Format Supported: **.yaml**, **.yml**, **.csv**
-
 
 ### Application Flow
 ![App - Idle](./readme-asset/appFlow.png)
@@ -49,11 +41,11 @@ csvYaml
 └── requirements.txt
 ```
 
-<!-- ## Application
-
-| Application Name  | Default Port | Language | Description |
-| ------------- | ------------- | ------------- | ------------- |
-| CSVYAML | 5000 | Python | This is a flask based application that renders a frontend which asks for a file returns the processed file as an interactive link to download output file.  | -->
+### How It Works
+- Upload: Users can upload a YAML or CSV file through the web interface.
+- Process: The application processes the uploaded file using the csvYaml module.
+- Download: Users can download the converted file from the web interface.
+- File Format Supported: **.yaml**, **.yml**, **.csv**
 
 #### App in idle state:
 ![App - Idle](./readme-asset/appIdle.png)
