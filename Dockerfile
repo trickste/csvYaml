@@ -1,4 +1,4 @@
-# Set working directory
+# First stage: Requirement assembly stage
 FROM python:3.10-slim as builder
 
 # Set working directory
@@ -16,6 +16,7 @@ RUN python -m venv /opt/venv && \
 # Copy setup script
 COPY ./csvYaml .
 
+# Create a "wheel" distribution
 RUN python3 setup.py bdist_wheel
 
 

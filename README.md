@@ -1,14 +1,14 @@
 # CSV - YAML
 
-## Project Decscription
-This repository contains a Web application that converts between "YAML" and "CSV" file formats. It provides a user-friendly interface for uploading a file, processing it, and downloading the converted file.
+## Project Description
+This repository contains a web application that converts between "YAML" and "CSV" file formats. It provides a user-friendly interface for uploading a file, processing it, and downloading the converted file.
 
 ## Key Components
 **csvYaml Module**: A custom Python module that handles the conversion between YAML and CSV. This module is packaged and used within the application container.
 
 ## Features
 - **YAML to CSV Conversion**: Upload a YAML file and receive a CSV file.
-    - The algorithm is able to convert ".yaml" or ".yml" file to ".cvs" format.
+    - The algorithm is able to convert ".yaml" or ".yml" file to ".csv" format.
 - **CSV to YAML Conversion**: Upload a CSV file and receive a YAML file.
     - The algorithm is successfully able to convert ".csv" file to ".yaml" format **up to 2 levels**.
 
@@ -54,57 +54,6 @@ csvYaml
 #### App when file is processed and ready to be downloaded:
 ![App - Processed](./readme-asset/appProcessed.png)
 
-## Conversion Example
-
-#### Sample yaml File: yamlFile.yaml
-```
-    instances:
-- host: 173.20.1.1
-  timeout: 1.0
-  tags:
-  - ip:173.20.1.1
-  - env:prod
-  - type:virtual
-  - name:2-base
-  - hardware:server
-  - testval:
-    - val11
-    - val12
-    - val13
-- host: 174.28.2.2
-  timeout: 1.0
-  tags:
-  - ip:174.28.2.2
-  - env:prod
-  - type:virtual
-  - name:2-game
-  - hardware:server
-  - testval:
-    - val21
-    - val22
-    - val23
-- host: 174.28.32.8
-  timeout: 1.0
-  tags:
-  - ip:174.28.32.8
-  - env:prod
-  - type:virtual
-  - name:2-play
-  - hardware:server
-  - testval:
-    - val31
-    - val32
-    - val33
-```
-
-#### Output File:
-```
-host,timeout,tags/0/ip,tags/1/env,tags/2/type,tags/3/name,tags/4/hardware,tags/5/testval/0,tags/5/testval/1,tags/5/testval/2
-173.20.1.1,1.0,173.20.1.1,prod,virtual,2-base,server,val11,val12,val13
-174.28.2.2,1.0,174.28.2.2,prod,virtual,2-game,server,val21,val22,val23
-174.28.32.8,1.0,174.28.32.8,prod,virtual,2-play,server,val31,val32,val33
-```
-
 #### csvYaml module usage
 ```
 from csvYaml import converter
@@ -112,6 +61,11 @@ from csvYaml import converter
 output_file = converter(input_file, output_file_directory)
 
 ```
+
+## Conversion Example
+YAML to CSV : [yamlFile.csv](https://drive.google.com/file/d/1IrLk_TMGDR6hnkMUr0dJr77qOvetve1T/view?usp=sharing) => [yamlFile.csv](https://drive.google.com/file/d/1zyFa64o1pkUVE-fQGR9P_gkgTAhxrgTZ/view?usp=sharing)
+
+CSV  to YAML: [csvFile.csv]() => [csvFile.yaml]()
 
 ## CI/CD Flow
 
@@ -124,7 +78,7 @@ output_file = converter(input_file, output_file_directory)
 
 ## Roadmap
 - Automatic version upgrade.
-- Quality gates for PyLint, trivy and dockle tests.
-- CSV to YAML Conversion up to n level.
-- Handle Unsupported files.
-- Updating CICD to make it mode modular to scale it to multiple environments.
+- Quality gates for PyLint, Trivy, and Dockle tests.
+- CSV to YAML Conversion up to n levels.
+- Handle unsupported files.
+- Updating CI/CD to make it more modular and scalable to multiple environments.
