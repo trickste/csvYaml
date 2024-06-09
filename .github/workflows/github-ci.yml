@@ -24,6 +24,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build Container
       run: |
+        docker login -u ${{ vars.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PAT }}
         docker build . --file Dockerfile --tag tricksterepo/csvyaml:"${version}"
         docker tag tricksterepo/csvyaml:"${version}" tricksterepo/csvyaml:latest
 
