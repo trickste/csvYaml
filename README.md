@@ -64,3 +64,9 @@ csvYaml
 #Note: The pipeline waits for manual approval to perform CD
 
 
+## Roadmap
+- Automatic Version upgrade
+- Threashold gateway for PyLint, trivy and dockle tests
+- Better CSV to YAML Conversion
+- Handle Unsupported files
+- Updating CICD to make it mode modular to scale it to multiple environments.
