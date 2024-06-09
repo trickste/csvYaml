@@ -41,6 +41,7 @@ RUN pip install ./dist/*.whl
 # Copy application code
 COPY ./csvYaml/main.py ./
 COPY ./csvYaml/templates/ ./templates/
+COPY ./csvYaml/static/ ./static/
 
 # Command to run the application
 ENTRYPOINT ["python3", "main.py"]
