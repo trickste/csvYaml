@@ -2,17 +2,64 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main"]
   pull_request:
     branches: [ "main" ]
 
 jobs:
-
-  build:
-
-    runs-on: nishant-Predator
-
+  test:
+    name: Lint test
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Linting Test
+      run: |
+        pylint ./csvYaml/csvYaml
+
+  build:
+    needs: test
+    name: Build Docker image
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build Container
+      run: |
+        version=`python3 csvYaml/fetchVersion.py`
+        docker build . --file Dockerfile --tag tricksterepo/csvyaml:"${version}"
+        docker tag tricksterepo/csvyaml:"${version}" tricksterepo/csvyaml:latest
+
+  imagetest:
+    needs: build
+    name: Perform Trivy and Dockle the Docker image
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v4
+    - name: Perform Trivy test
+      run: |
+        trivy image tricksterepo/csvyaml:latest
+    - name: Perform Dockle test
+      run: |
+        dockle tricksterepo/csvyaml:latest
+
+  pushimage:
+    needs: imagetest
+    name: Build Docker image
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build Container
+      run: |
+        version=`python3 csvYaml/fetchVersion.py`
+        docker login -u ${{ vars.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PAT }}
+        docker push tricksterepo/csvyaml:"${version}" && docker push tricksterepo/csvyaml:latest
+
+  deploy:
+    needs: pushimage
+    name: Deploy the Docker image
+    runs-on: self-hosted
+    environment: dev
+    steps:
+    - uses: actions/checkout@v4
+    - name: Deploy application
+      run: |
+        docker compose up -d

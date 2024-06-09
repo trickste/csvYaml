@@ -1,4 +1,4 @@
-# Set working directory
+# First stage: Requirement assembly stage
 FROM python:3.10-slim as builder
 
 # Set working directory
@@ -16,6 +16,7 @@ RUN python -m venv /opt/venv && \
 # Copy setup script
 COPY ./csvYaml .
 
+# Create a "wheel" distribution
 RUN python3 setup.py bdist_wheel
 
 
@@ -39,7 +40,9 @@ ENV PATH /opt/venv/bin:$PATH
 RUN pip install ./dist/*.whl
 
 # Copy application code
-COPY ./csvYaml/main.py .
+COPY ./csvYaml/main.py ./
+COPY ./csvYaml/templates/ ./templates/
+COPY ./csvYaml/static/ ./static/
 
 # Command to run the application
 ENTRYPOINT ["python3", "main.py"]
