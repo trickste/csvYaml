@@ -1,7 +1,7 @@
 # CSV - YAML
 
 ## Project Description
-This repository contains a web application that converts between "YAML" and "CSV" file formats. It provides a user-friendly interface for uploading a file, processing it, and downloading the converted file.
+This repository contains a web application that converts between YAML and CSV file formats. It provides a user-friendly interface for uploading a file, processing it, and downloading the converted file.
 
 ## Key Components
 **csvYaml Module**: A custom Python module that handles the conversion between YAML and CSV. This module is packaged in a wheel file and used within the application container.
@@ -80,13 +80,13 @@ CSV to YAML: [csvFile.csv](https://drive.google.com/file/d/1fET8jULu2Ow63_LCwxxg
 
 #### Note: 
 - The pipeline waits for manual approval to perform CD.
-- Github Runners are installed on my local machine to run the pipeline.
-- Docker container for the application is deployed on my local machine.
+- GitHub Runners are installed on my local machine to run the pipeline.
+- The Docker container for the application is deployed on my local machine.
 
 ## Roadmap
 - Automatic version upgrade.
 - Quality gates for PyLint, Trivy, and Dockle tests.
 - CSV to YAML Conversion up to n levels.
 - Updating CI/CD to make it more modular and scalable to multiple environments.
-- Add Healthcheck for application
-- Updadte Dockerfile to make image more secure
+- Add health checks for the application.
+- Update Dockerfile to make the image more secure.
