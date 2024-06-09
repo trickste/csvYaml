@@ -3,7 +3,7 @@ INIT file to initialize module
 """
 # pylint: disable=C0103, E0401
 import sys
-from converterFile import csvToYaml, yamlToCsv
+from .converterFile import csvToYaml, yamlToCsv
 
 def converter(input_file, output_path):
     '''Init method for the module'''
