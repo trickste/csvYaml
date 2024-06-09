@@ -46,7 +46,7 @@ jobs:
         dockle tricksterepo/csvyaml:latest
 
   deploy:
-    needs: build
+    needs: imagetest
     name: Deploy the Docker image
     runs-on: self-hosted
     steps:
