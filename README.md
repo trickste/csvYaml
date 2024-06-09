@@ -10,7 +10,7 @@ This repository contains a Web application that converts between "YAML" and "CSV
 - **YAML to CSV Conversion**: Upload a YAML file and receive a CSV file.
     - The algorithm is able to convert ".yaml" or ".yml" file to ".cvs" format.
 - **CSV to YAML Conversion**: Upload a CSV file and receive a YAML file.
-    - The algorithm is successfully able to convert ".csv" file to ".yaml" format up to 2 levels.
+    - The algorithm is successfully able to convert ".csv" file to ".yaml" format **up to 2 levels**.
 
 ## Technology Stack
 - **Backend**: Python with Flask
@@ -123,8 +123,8 @@ output_file = converter(input_file, output_file_directory)
 #Note: The pipeline waits for manual approval to perform CD
 
 ## Roadmap
-- Automatic Version upgrade
-- Threashold gateway for PyLint, trivy and dockle tests
-- Better CSV to YAML Conversion
-- Handle Unsupported files
+- Automatic version upgrade.
+- Quality gates for PyLint, trivy and dockle tests.
+- CSV to YAML Conversion up to n level.
+- Handle Unsupported files.
 - Updating CICD to make it mode modular to scale it to multiple environments.
