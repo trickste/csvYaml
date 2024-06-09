@@ -54,6 +54,9 @@ csvYaml
 #### App when file is processed and ready to be downloaded:
 ![App - Processed](./readme-asset/appProcessed.png)
 
+#### App when file is file uploaded is of wrong extension:
+![App - Wrong Extension file](./readme-asset/appWrongFile.png)
+
 #### csvYaml module usage
 ```
 from csvYaml import converter
@@ -65,7 +68,7 @@ output_file = converter(input_file, output_file_directory)
 ## Conversion Example
 YAML to CSV : [yamlFile.csv](https://drive.google.com/file/d/1IrLk_TMGDR6hnkMUr0dJr77qOvetve1T/view?usp=sharing) => [yamlFile.csv](https://drive.google.com/file/d/1zyFa64o1pkUVE-fQGR9P_gkgTAhxrgTZ/view?usp=sharing)
 
-CSV  to YAML: [csvFile.csv]() => [csvFile.yaml]()
+CSV to YAML: [csvFile.csv](https://drive.google.com/file/d/1fET8jULu2Ow63_LCwxxgc72AlmNCzhK9/view?usp=sharing) => [csvFile.yaml](https://drive.google.com/file/d/18bLp37T-jMvvG9WGjjO8_CH-FGK7-Gr7/view?usp=sharing)
 
 ## CI/CD Flow
 
@@ -74,7 +77,11 @@ CSV  to YAML: [csvFile.csv]() => [csvFile.yaml]()
 
 #### CI/CD Github Actions Screenshot
 ![App - Idle](./readme-asset/cicdGithub.png)
-#Note: The pipeline waits for manual approval to perform CD
+
+#### Note: 
+- The pipeline waits for manual approval to perform CD.
+- Github Runners are installed on my local machine to run the pipeline.
+- Docker container for the application is deployed on my local machine.
 
 ## Roadmap
 - Automatic version upgrade.
