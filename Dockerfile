@@ -39,7 +39,7 @@ ENV PATH /opt/venv/bin:$PATH
 RUN pip install ./dist/*.whl
 
 # Copy application code
-COPY ./csvYaml/main.py ./templates/ ./
+COPY ./csvYaml/main.py ./csvYaml/templates/ ./
 
 # Command to run the application
 ENTRYPOINT ["python3", "main.py"]
