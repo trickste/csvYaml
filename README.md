@@ -13,12 +13,12 @@ This repository contains a Web application that converts between "YAML" and "CSV
     - The algorithm is successfully able to convert ".csv" file to ".yaml" format up to 2 levels.
 
 ## Technology Stack
-- Backend: Python with Flask
-- Frontend: HTML, CSS
-- Containerization: Docker
-- CICD: Github Actions
+- **Backend**: Python with Flask
+- **Frontend**: HTML, CSS
+- **Containerization**: Docker
+- **CICD**: Github Actions
 
-### Application Flow
+## Application Flow
 ![App - Idle](./readme-asset/appFlow.png)
 
 #### Directory Structure:
@@ -42,11 +42,11 @@ csvYaml
 └── requirements.txt
 ```
 
-### How It Works
-- Upload: Users can upload a YAML or CSV file through the web interface.
-- Process: The application processes the uploaded file using the csvYaml module.
-- Download: Users can download the converted file from the web interface.
-- File Format Supported: **.yaml**, **.yml**, **.csv**
+#### How It Works
+- **Upload**: Users can upload a YAML or CSV file through the web interface.
+- **Process**: The application processes the uploaded file using the csvYaml module.
+- **Download**: Users can download the converted file from the web interface.
+- **File Format Supported**: .yaml, .yml and .csv
 
 #### App in idle state:
 ![App - Idle](./readme-asset/appIdle.png)
