@@ -80,5 +80,6 @@ CSV  to YAML: [csvFile.csv]() => [csvFile.yaml]()
 - Automatic version upgrade.
 - Quality gates for PyLint, Trivy, and Dockle tests.
 - CSV to YAML Conversion up to n levels.
-- Handle unsupported files.
 - Updating CI/CD to make it more modular and scalable to multiple environments.
+- Add Healthcheck for application
+- Updadte Dockerfile to make image more secure

@@ -3,13 +3,14 @@ This file created frontend for the application
 '''
 # pylint: disable=C0103, E0401, R1710
 import os
-from flask import Flask, request, render_template, send_from_directory, redirect, url_for
+from flask import Flask, request, render_template, send_from_directory, redirect, url_for, flash
 from csvYaml import converter
 
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['PROCESSED_FOLDER'] = 'processed'
+app.secret_key = 'supersecretkey'  # Needed for flashing messages
 
 # Ensure the upload and processed directories exist
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -30,6 +31,10 @@ def upload_file():
         return 'No selected file'
     if file:
         filename = file.filename
+        if filename.lower().split(".")[-1] not in ['yaml','yml','csv']:
+            app.logger.info("ERROR RAN, the ext was : " + str(filename.lower().split(".")[-1]))
+            flash('PSST!! ... ITS YAML <=> CSV Converter!!!')
+            return redirect(url_for('upload_form'))
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
         processed_filename = process_file(file_path, filename)
@@ -53,4 +58,4 @@ def process_file(file_path, filename):
     return output_file
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port='5000')
+    app.run(debug=True, host='0.0.0.0', port='5050')
