@@ -1,7 +1,7 @@
 """
 Converter file to initialize module
 """
-# pylint: disable=C0103, E0401
+# pylint: disable=C0103, E0401, C0301
 import sys
 import yaml
 import pandas as pd
