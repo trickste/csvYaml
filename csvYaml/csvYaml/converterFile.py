@@ -60,18 +60,20 @@ def conversionToCsv(data, output):
     return output
 
 
-def yamlToCsv(filename):
+def yamlToCsv(input_file, output_path):
     '''Function to read yaml file and forward for data conversion'''
     output = {}
     try:
-        with open(filename, "r", encoding='UTF-8') as file:
+        with open(input_file, "r", encoding='UTF-8') as file:
             fileData = yaml.safe_load(file)
     except yaml.YAMLError as exc:
         print(exc)
         sys.exit(1)
     output = conversionToCsv(fileData, output)
     pandas_output = pd.DataFrame(output)
-    pandas_output.to_csv("yamlFileCsvOutput.csv", index=False)
+    output_file = outputFileNameConversion(input_file, "csv")
+    pandas_output.to_csv(output_path + "/" + output_file, index=False)
+    return output_file
 
 
 def conversionToYaml(data, rows, output):
@@ -83,15 +85,24 @@ def conversionToYaml(data, rows, output):
         output.append(val)
     return output
 
-def csvToYaml(filename):
+def csvToYaml(input_file, output_path):
     '''Function to read csv file and forward for data conversion'''
-    print("this is csv: "+ filename)
     output = []
     try:
-        fileData = pd.read_csv(filename)
+        fileData = pd.read_csv(input_file)
     except yaml.YAMLError as exc:
         print(exc)
         sys.exit(1)
     output = conversionToYaml(fileData.to_dict(), len(fileData.index), output)
-    with open( "csvFileYamlOutput.yaml" , 'w', encoding='UTF-8' ) as outfile:
+    output_file = outputFileNameConversion(input_file, "yaml")
+    with open( output_path + "/" + output_file, 'w', encoding='UTF-8' ) as outfile:
         yaml.dump( output , outfile , default_flow_style=False )
+    return output_file
+
+
+def outputFileNameConversion(input_file, ext):
+    '''This Function is changing output file extension'''
+    filename = input_file.split("/")[-1]
+    filename = filename.split(".")
+    filename[-1] = ext
+    return ".".join(filename)
