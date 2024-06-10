@@ -13,10 +13,23 @@ This repository contains a web application that converts between YAML and CSV fi
     - The algorithm is successfully able to convert ".csv" file to ".yaml" format **up to 2 levels**.
 
 ## Technology Stack
-- **Backend**: Python with Flask
+- **Backend**: Python3 with Flask
 - **Frontend**: HTML, CSS
 - **Containerization**: Docker
-- **CICD**: Github Actions
+- **CI/CD**: Github Actions
+
+## Python Requirements
+
+| Package | Version | 
+| -- | --|
+| pandas | 2.2.2 |
+| PyYAML | 6.0.1 |
+| wheel | 0.43.0 |
+| setuptools | 69.5.1 |
+| flask | 3.0.3 |
+| jinja2 | 3.1.4 |
+| markupSafe | 2.1.5 |
+| click | 8.1.7 |
 
 ## Application Flow
 ![App - Idle](./readme-asset/appFlow.png)
@@ -78,15 +91,37 @@ CSV to YAML: [csvFile.csv](https://drive.google.com/file/d/1fET8jULu2Ow63_LCwxxg
 #### CI/CD Github Actions Screenshot
 ![App - Idle](./readme-asset/cicdGithub.png)
 
+#### How to use CI/CD file
+- Create the application as per the directory structure
+- the CI/CD is configured to be invoked on every and pull request on the main branch.
+- On invoking the pipeline the folloinng steps will take place
+    - **Test Job**: It performs linting test on the python scripts.
+    - **Build Job**: It containerizes the application and the **csvYaml** module. 
+    - **Image Test Job**: It performs Trivy and Dockle tests on the docker image. Here, we are not using the tests on docker image as quality gates. 
+    - **Image Push Job**: Here, the image is pushed to [Dockerhub](https://hub.docker.com/repository/docker/tricksterepo/pythontestapp/general) 
+    - **Deploy Job**: Finally the Web app is deployed in my local system as a docker container.
+
+
 #### Note: 
 - The pipeline waits for manual approval to perform CD.
 - GitHub Runners are installed on my local machine to run the pipeline.
 - The Docker container for the application is deployed on my local machine.
+- Dockerfile functioning:
+    - **Stage one**:
+        - This stage installs the requirements in a venv
+        - Then creates the wheel file using command `python3 setup.py bdist_wheel`, here:
+            - **setup.py** is the file typically contains metadata about the project and instructions on how to install the package, its dependencies, and other necessary information.
+            - **bdist_wheel** command creates a binary distribution in form of a "wheel" file.
+    - **Stage Two**:
+        - Copies requirements and wheel dictribution file from the previous stage
+        - Copies the Web app files from local machine.
+        - Invokes the application
 
 ## Roadmap
-- Automatic version upgrade.
-- Quality gates for PyLint, Trivy, and Dockle tests.
-- CSV to YAML Conversion up to n levels.
-- Updating CI/CD to make it more modular and scalable to multiple environments.
-- Add health checks for the application.
-- Update Dockerfile to make the image more secure.
+- Implement a system for automatic version upgrades to ensure consistent versioning.
+- Set up quality gates for PyLint, Trivy, and Dockle tests to enforce code quality and security.
+- Enhance CSV to YAML conversion to support nested structures of arbitrary depth.
+- Refactor CI/CD pipeline to be more modular and scalable across different environments.
+- Add health checks to monitor the application's status and ensure it is running correctly.
+- Update Dockerfile to follow best practices for security and reduce the attack surface.
+- Update for deploying the application to cloud platforms like AWS, Azure, and Google Cloud.
